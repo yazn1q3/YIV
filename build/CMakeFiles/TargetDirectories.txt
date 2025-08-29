@@ -1,4 +1,0 @@
-/home/yazn/sounds/build/CMakeFiles/ImageViewer.dir
-/home/yazn/sounds/build/CMakeFiles/edit_cache.dir
-/home/yazn/sounds/build/CMakeFiles/rebuild_cache.dir
-/home/yazn/sounds/build/CMakeFiles/ImageViewer_autogen.dir
