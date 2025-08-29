@@ -1,0 +1,9 @@
+Package: yiv
+Version: 1.0
+Section: graphics
+Priority: optional
+Architecture: amd64
+Depends: libqt5widgets5, libqt5gui5, libqt5core5a, libqt5multimedia5, libqt5network5
+Maintainer: Yazen <yaznal773@gmail.com>
+Description: Yaznbook Image Viewer
+ Yaznbook Image Viewer by Yaznbook

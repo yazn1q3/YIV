@@ -1,0 +1,19 @@
+{
+	"BUILD_DIR" : "/home/yazn/sounds/build/ImageViewer_autogen",
+	"CMAKE_BINARY_DIR" : "/home/yazn/sounds/build",
+	"CMAKE_CURRENT_BINARY_DIR" : "/home/yazn/sounds/build",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/home/yazn/sounds",
+	"CMAKE_SOURCE_DIR" : "/home/yazn/sounds",
+	"INCLUDE_DIR" : "/home/yazn/sounds/build/ImageViewer_autogen/include",
+	"INPUTS" : [ "/home/yazn/sounds/app_logo.png" ],
+	"LOCK_FILE" : "/home/yazn/sounds/build/CMakeFiles/ImageViewer_autogen.dir/AutoRcc_resources_EWIEGA46WW_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "-name", "resources" ],
+	"OUTPUT_CHECKSUM" : "EWIEGA46WW",
+	"OUTPUT_NAME" : "qrc_resources.cpp",
+	"RCC_EXECUTABLE" : "/usr/lib/qt5/bin/rcc",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "/home/yazn/sounds/build/CMakeFiles/ImageViewer_autogen.dir/AutoRcc_resources_EWIEGA46WW_Used.txt",
+	"SOURCE" : "/home/yazn/sounds/resources.qrc",
+	"VERBOSITY" : 0
+}

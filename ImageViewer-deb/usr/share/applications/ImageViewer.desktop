@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=ImageViewer
+Comment=Yaznbook Image Viewer
+Exec=ImageViewer
+Icon=app_logo
+Terminal=false
+Type=Application
+Categories=Utility;Graphics;
+
