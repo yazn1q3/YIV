@@ -11,27 +11,29 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    # 1️⃣ Checkout the repo
-    - name: Checkout repo
-      uses: actions/checkout@v3
+      # 1️⃣ Checkout repo
+      - name: Checkout repo
+        uses: actions/checkout@v3
 
-    # 2️⃣ Install Qt (using Chocolatey)
-    - name: Install Qt5
-      shell: powershell
-      run: |
-        choco install qt5 -y
+      # 2️⃣ Install Qt5 using jurplel/install-qt-action
+      - name: Install Qt5
+        uses: jurplel/install-qt-action@v2
+        with:
+          version: '5.15.2'
+          host: 'windows'
+          arch: 'win64_msvc2019_64'
 
-    # 3️⃣ Configure CMake with Qt path
-    - name: Configure CMake
-      run: cmake -B build -S . -DCMAKE_PREFIX_PATH="C:/Qt/5.15.2/msvc2019_64/lib/cmake"
+      # 3️⃣ Configure CMake with Qt path
+      - name: Configure CMake
+        run: cmake -B build -S . -DCMAKE_PREFIX_PATH="${{ env.QTDIR }}/5.15.2/msvc2019_64/lib/cmake"
 
-    # 4️⃣ Build project
-    - name: Build project
-      run: cmake --build build --config Release
+      # 4️⃣ Build project
+      - name: Build project
+        run: cmake --build build --config Release
 
-    # 5️⃣ Upload the EXE
-    - name: Upload EXE
-      uses: actions/upload-artifact@v4
-      with:
-        name: YIVApp-EXE
-        path: build/Release/YIVApp.exe
+      # 5️⃣ Upload EXE
+      - name: Upload EXE
+        uses: actions/upload-artifact@v4
+        with:
+          name: YIVApp-EXE
+          path: build/Release/YIVApp.exe
