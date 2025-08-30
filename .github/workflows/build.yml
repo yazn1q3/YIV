@@ -11,29 +11,30 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      # 1️⃣ Checkout repo
-      - name: Checkout repo
-        uses: actions/checkout@v3
+    - name: Checkout repo
+      uses: actions/checkout@v3
 
-      # 2️⃣ Install Qt5 using jurplel/install-qt-action
-      - name: Install Qt5
-        uses: jurplel/install-qt-action@v2
-        with:
-          version: '5.15.2'
-          host: 'windows'
-          arch: 'win64_msvc2019_64'
+    # تثبيت Qt (لو برنامجك يستخدم Qt)
+    - name: Install Qt
+      run: |
+        choco install qt5-qtbase -y
+      shell: powershell
 
-      # 3️⃣ Configure CMake with Qt path
-      - name: Configure CMake
-        run: cmake -B build -S . -DCMAKE_PREFIX_PATH="${{ env.QTDIR }}/5.15.2/msvc2019_64/lib/cmake"
+    # إعداد MSVC environment
+    - name: Setup MSVC
+      uses: microsoft/setup-msvc@v1
 
-      # 4️⃣ Build project
-      - name: Build project
-        run: cmake --build build --config Release
+    # إعداد CMake
+    - name: Configure CMake
+      run: cmake -B build -S .
 
-      # 5️⃣ Upload EXE
-      - name: Upload EXE
-        uses: actions/upload-artifact@v4
-        with:
-          name: YIVApp-EXE
-          path: build/Release/YIVApp.exe
+    # بناء البرنامج
+    - name: Build project
+      run: cmake --build build --config Release
+
+    # رفع الـ EXE بعد البناء
+    - name: Upload EXE
+      uses: actions/upload-artifact@v4
+      with:
+        name: YIVApp-EXE
+        path: build/Release/YIVApp.exe
