@@ -19,13 +19,13 @@ jobs:
         host: 'windows'
 
     - name: Configure CMake
-      run: cmake -B build -S . -G "Visual Studio 17 2022" -DCMAKE_PREFIX_PATH="${{ env.HOME }}\Qt\5.15.2\msvc2019_64\lib\cmake"
+      run: cmake -B build -S . -G "Visual Studio 17 2022" -DCMAKE_PREFIX_PATH="C:\Qt\5.15.2\msvc2019_64\lib\cmake"
 
     - name: Build project
       run: cmake --build build --config Release
 
     - name: Upload EXE
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: ImageViewer
         path: build/Release/ImageViewer.exe
