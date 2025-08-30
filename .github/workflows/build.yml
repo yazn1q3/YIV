@@ -14,27 +14,14 @@ jobs:
     - name: Checkout repo
       uses: actions/checkout@v3
 
-    # تثبيت Qt (لو برنامجك يستخدم Qt)
-    - name: Install Qt
-      run: |
-        choco install qt5-qtbase -y
-      shell: powershell
-
-    # إعداد MSVC environment
-    - name: Setup MSVC
-      uses: microsoft/setup-msvc@v1
-
-    # إعداد CMake
     - name: Configure CMake
-      run: cmake -B build -S .
+      run: cmake -B build -S . -G "Visual Studio 17 2022"
 
-    # بناء البرنامج
     - name: Build project
       run: cmake --build build --config Release
 
-    # رفع الـ EXE بعد البناء
     - name: Upload EXE
       uses: actions/upload-artifact@v4
       with:
-        name: YIVApp-EXE
-        path: build/Release/YIVApp.exe
+        name: MyApp-EXE
+        path: build/Release/MyApp.exe
