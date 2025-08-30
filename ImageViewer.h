@@ -11,6 +11,7 @@
 #include <QVideoWidget>
 #include <QPushButton>
 
+
 class ImageViewer : public QMainWindow {
     Q_OBJECT
 public:
