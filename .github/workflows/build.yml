@@ -3,8 +3,6 @@ name: Build Windows EXE
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
 jobs:
   build:
@@ -14,8 +12,14 @@ jobs:
     - name: Checkout repo
       uses: actions/checkout@v3
 
+    - name: Install Qt
+      shell: powershell
+      run: |
+        choco install qt5-lts -y
+        $env:Qt5_DIR="C:\Qt\5.15.2\msvc2019_64\lib\cmake\Qt5"
+
     - name: Configure CMake
-      run: cmake -B build -S . -G "Visual Studio 17 2022"
+      run: cmake -B build -S . -DQt5_DIR=$env:Qt5_DIR -G "Visual Studio 17 2022"
 
     - name: Build project
       run: cmake --build build --config Release
@@ -23,5 +27,5 @@ jobs:
     - name: Upload EXE
       uses: actions/upload-artifact@v4
       with:
-        name: MyApp-EXE
-        path: build/Release/MyApp.exe
+        name: ImageViewer-EXE
+        path: build/Release/ImageViewer.exe
